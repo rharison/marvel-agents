@@ -5,6 +5,8 @@ export const Container = styled.div`
     height: 100vh;
     background-color: #00113D;
     padding: 49px 68px 168px 106px;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Header = styled.header`
@@ -13,6 +15,9 @@ export const Header = styled.header`
 
 export const Content = styled.div`
     margin: 42px 0 0 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const ChildrenContainer = styled.div`
