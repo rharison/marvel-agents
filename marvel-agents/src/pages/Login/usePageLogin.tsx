@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react"
 import { LoginSteps } from "./types"
+import { Input } from "../../components"
+import { ContainerInputsLogin } from "./styles"
 
 type UsePageLoginProps = {
     initialStep: LoginSteps
@@ -14,6 +16,12 @@ const usePageLogin = ({ initialStep }: UsePageLoginProps) => {
                 return {
                     title: "Bem-vindo",
                     description: "informe as suas credenciais de acesso ao portal",
+                    rest: (
+                        <ContainerInputsLogin>
+                            <Input type="email" />
+                            <Input type="password" />
+                        </ContainerInputsLogin>
+                    )
                 }
             case LoginSteps.RECOVERY_PASSWORD:
                 return {
@@ -38,7 +46,6 @@ const usePageLogin = ({ initialStep }: UsePageLoginProps) => {
         contentPage,
         updateStepLogin: setStepLogin,
     }
-
 }
 
 export default usePageLogin

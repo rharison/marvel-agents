@@ -20,6 +20,7 @@ export const Login = () => {
                 <Description>
                     {contentPage.description}
                 </Description>
+                {contentPage.rest}
             </Container>
         </LayoutHome>
     )

@@ -11,3 +11,10 @@ export const Description = styled.span`
     font-size: 1rem;
     color: #777777;
 `;
+
+export const ContainerInputsLogin = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 6px 0 11px 0;
+    gap: 23px;
+`;
