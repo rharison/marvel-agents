@@ -1,8 +1,10 @@
+import { TextFieldProps } from "@mui/material";
+
 export type InputType = 'email' | 'password'
 
 export type InputProps = {
-    type: InputType
-}
+    type: InputType;
+} & TextFieldProps
 
 export type ContentByType = {
     [key in InputType]: {

@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { gray } from "./theme/colors";
 import { Login } from "./pages";
+import { HomePageProvider } from "./context/HomePageContext";
 
 const mdTheme = createTheme(
   {
@@ -17,12 +18,14 @@ const mdTheme = createTheme(
 function App() {
   return (
     <ThemeProvider theme={mdTheme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <HomePageProvider>
+        <CssBaseline />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </HomePageProvider>
     </ThemeProvider>
   )
 }

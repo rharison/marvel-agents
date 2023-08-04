@@ -1,14 +1,12 @@
 import { TitleWithDecoration } from "../../components"
 import { LayoutHome } from "../../layout"
 import { Container, Description } from "./styles"
-import { LoginSteps } from "./types"
 import usePageLogin from "./usePageLogin"
 
 export const Login = () => {
     const {
         contentPage,
-        updateStepLogin
-    } = usePageLogin({ initialStep: LoginSteps.LOGIN })
+    } = usePageLogin()
 
     return (
         <LayoutHome>

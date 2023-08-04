@@ -1,32 +1,25 @@
-import { useMemo, useState } from "react"
+import { useContext, useMemo } from "react"
+import { HomePageContext } from "../../context/HomePageContext"
+import { FormLogin } from "./components/FormLogin"
 import { LoginSteps } from "./types"
-import { Input } from "../../components"
-import { ContainerInputsLogin } from "./styles"
+import { FormRecoveryPassword } from "./components/FormRecoveryPassword"
 
-type UsePageLoginProps = {
-    initialStep: LoginSteps
-}
-
-const usePageLogin = ({ initialStep }: UsePageLoginProps) => {
-    const [stepLogin, setStepLogin] = useState<LoginSteps>(initialStep)
+const usePageLogin = () => {
+    const homePageStep = useContext(HomePageContext)
 
     const contentPage = useMemo(() => {
-        switch (stepLogin) {
+        switch (homePageStep) {
             case LoginSteps.LOGIN:
                 return {
                     title: "Bem-vindo",
                     description: "informe as suas credenciais de acesso ao portal",
-                    rest: (
-                        <ContainerInputsLogin>
-                            <Input type="email" />
-                            <Input type="password" />
-                        </ContainerInputsLogin>
-                    )
+                    rest: <FormLogin />
                 }
             case LoginSteps.RECOVERY_PASSWORD:
                 return {
                     title: "Recuperar senha",
                     description: "Informe o e-mail do seu cadastro. Nós estaremos realizando o envio de um link com as instruções para você redefinir a sua senha.",
+                    rest: <FormRecoveryPassword />
                 }
             case LoginSteps.AFTER_RECOVERY_PASSWORD:
                 return {
@@ -40,11 +33,10 @@ const usePageLogin = ({ initialStep }: UsePageLoginProps) => {
                     description: "Tenha a visão completa do seu agente.",
                 }
         }
-    }, [stepLogin])
+    }, [homePageStep])
 
     return {
         contentPage,
-        updateStepLogin: setStepLogin,
     }
 }
 
