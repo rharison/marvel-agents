@@ -3,6 +3,7 @@ import { HomePageContext } from "../../context/HomePageContext"
 import { FormLogin } from "./components/FormLogin"
 import { LoginSteps } from "./types"
 import { FormRecoveryPassword } from "./components/FormRecoveryPassword"
+import { SuccessRecoveryPassword } from "./components/SuccessRecoveryPassword"
 
 const usePageLogin = () => {
     const homePageStep = useContext(HomePageContext)
@@ -26,11 +27,15 @@ const usePageLogin = () => {
                     title: "Tudo certo",
                     decoration: ';)',
                     description: "Foi enviado um e-mail para você com instruções de como redefinir a sua senha.",
+                    rest: <SuccessRecoveryPassword />
                 }
             case LoginSteps.SELECT_AGENT:
                 return {
                     title: "Selecione o seu agente mais legal",
                     description: "Tenha a visão completa do seu agente.",
+                    containerHeight: 319,
+                    containerWidth: 405,
+                    titleMargin: '0 0 2rem 0'
                 }
         }
     }, [homePageStep])

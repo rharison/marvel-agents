@@ -7,14 +7,14 @@ const useFormRecoveryPassword = () => {
   const setStepHomePage = useContext(HomePagDispatchContext)
   const [valueInputEmail, setValueInputEmail] = useState<string>("")
 
-  const handleClickForgoutPassword = () => {
-    setStepHomePage(LoginSteps.RECOVERY_PASSWORD)
+  const handleClickSendLink = () => {
+    setStepHomePage(LoginSteps.AFTER_RECOVERY_PASSWORD)
   }
 
   const isDisabledButton = !isValidEmail(valueInputEmail)
 
   return {
-    handleClickForgoutPassword,
+    handleClickSendLink,
     valueInputEmail,
     setValueInputEmail,
     isDisabledButton

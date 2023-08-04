@@ -68,7 +68,7 @@ export const Input = forwardRef(({ type, ...rest }: InputProps, ref) => {
             type={showPassword ? "text" : type}
             InputProps={{
                 endAdornment: contentByType[type].icon,
-                ref: ref,
+                inputRef: ref,
             }}
         />
     )

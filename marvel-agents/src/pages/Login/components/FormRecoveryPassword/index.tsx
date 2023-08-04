@@ -8,10 +8,9 @@ export const FormRecoveryPassword = () => {
   const {
     valueInputEmail,
     setValueInputEmail,
-    isDisabledButton
+    isDisabledButton,
+    handleClickSendLink
   } = useFormRecoveryPassword()
-
-  console.log('isDisabledButton', isDisabledButton)
 
   return (
     <Container>
@@ -23,6 +22,7 @@ export const FormRecoveryPassword = () => {
         }}
       />
       <Button
+        onClick={handleClickSendLink}
         disabled={isDisabledButton}
       >
         <ButtonContent>

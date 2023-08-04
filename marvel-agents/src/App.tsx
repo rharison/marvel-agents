@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { gray } from "./theme/colors";
 import { Login } from "./pages";
 import { HomePageProvider } from "./context/HomePageContext";
+import { Toaster } from "react-hot-toast";
 
 const mdTheme = createTheme(
   {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Routes>
         </BrowserRouter>
+        <Toaster />
       </HomePageProvider>
     </ThemeProvider>
   )

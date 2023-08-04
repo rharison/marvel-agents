@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $height?: number, $width?: number }>`
     padding: 49px 36px 43px 36px;
-    width: 380px;
+    width: ${props => props.$width ? `${props.$width}px` : '380px'};
+    height: ${props => props.$height ? `${props.$height}px` : '433px'};
     display: flex;
     flex-direction: column;
 `;

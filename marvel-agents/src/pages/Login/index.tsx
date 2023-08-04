@@ -10,10 +10,14 @@ export const Login = () => {
 
     return (
         <LayoutHome>
-            <Container>
+            <Container
+                $height={contentPage.containerHeight}
+                $width={contentPage.containerWidth}
+            >
                 <TitleWithDecoration
                     title={contentPage.title}
                     decoration={contentPage.decoration}
+                    margin={contentPage.titleMargin}
                 />
                 <Description>
                     {contentPage.description}

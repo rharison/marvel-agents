@@ -20,5 +20,4 @@ function HomePageProvider({ children }: HomePageContextProps) {
   )
 }
 
-
 export { HomePageProvider, HomePageContext, HomePagDispatchContext }

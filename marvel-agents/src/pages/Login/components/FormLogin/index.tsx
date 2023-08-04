@@ -9,7 +9,8 @@ export const FormLogin = () => {
   const {
     refInputEmail,
     refInputPassword,
-    handleClickForgoutPassword
+    handleClickForgoutPassword,
+    handleLogin
   } = useFormLogin()
 
   return (
@@ -18,7 +19,9 @@ export const FormLogin = () => {
         <Input type="email" ref={refInputEmail} />
         <Input type="password" ref={refInputPassword} />
       </ContainerInputsLogin>
-      <Button>
+      <Button
+        onClick={handleLogin}
+      >
         <ButtonContent>
           <TextButton>
             entrar
