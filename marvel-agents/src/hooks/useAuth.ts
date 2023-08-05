@@ -6,6 +6,10 @@ const useAuth = () => {
         const decodedToken = decodeToken(token);
         const tokenIsExpired = isExpired(token);
 
+        if(tokenIsExpired) {
+            localStorage.removeItem('token');
+        }
+
         return Boolean(decodedToken && !tokenIsExpired);
     };
 

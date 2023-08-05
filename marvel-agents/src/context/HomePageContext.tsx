@@ -20,7 +20,6 @@ function HomePageProvider({ children }: HomePageContextProps) {
 
   }, [isAuthenticated])
 
-
   return (
     <HomePageContext.Provider value={step}>
       <HomePagDispatchContext.Provider value={setStep}>

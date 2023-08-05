@@ -5,7 +5,8 @@ import { Login } from "./pages";
 import { HomePageProvider } from "./context/HomePageContext";
 import { Toaster } from "react-hot-toast";
 import useAuth from "./hooks/useAuth";
-
+import { LayoutApplication } from "./layout/Application";
+import { appRoutes } from "./config/routes";
 
 const mdTheme = createTheme(
   {
@@ -32,7 +33,22 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<PrivateRoute children={<h1>Home</h1>} />} />
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <LayoutApplication />
+                </PrivateRoute>
+              }
+            >
+              {appRoutes.map(route => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={route.element}
+                />
+              ))}
+            </Route>
           </Routes>
         </BrowserRouter>
         <Toaster />
