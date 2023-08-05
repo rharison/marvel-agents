@@ -1,10 +1,11 @@
-import { useContext, useRef } from "react"
-import { LoginSteps } from "../../types"
+import { useContext, useRef, useState } from "react"
 import { HomePagDispatchContext } from "../../../../context/HomePageContext"
-import { login } from "../../../../services/login"
 import useToast from "../../../../hooks/useToast"
+import { login } from "../../../../services/login"
+import { LoginSteps } from "../../types"
 
 const useFormLogin = () => {
+  const [loading, setLoading] = useState(false)
   const refInputEmail = useRef<HTMLInputElement>(null)
   const refInputPassword = useRef<HTMLInputElement>(null)
   const setStepHomePage = useContext(HomePagDispatchContext)
@@ -16,6 +17,7 @@ const useFormLogin = () => {
 
   const handleLogin = async () => {
     try {
+      setLoading(true)
       const email = refInputEmail.current?.value
       const password = refInputPassword.current?.value
       if(email && password) {
@@ -26,7 +28,9 @@ const useFormLogin = () => {
       }
       setStepHomePage(LoginSteps.SELECT_AGENT)
     } catch {
-      showToast('error', 'Oops! Email ou senha incorretos') 
+      showToast('error', 'Oops! Email ou senha incorretos')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -34,7 +38,8 @@ const useFormLogin = () => {
     refInputEmail,
     refInputPassword,
     handleClickForgoutPassword,
-    handleLogin
+    handleLogin,
+    isLoading: loading
   }
 }
 

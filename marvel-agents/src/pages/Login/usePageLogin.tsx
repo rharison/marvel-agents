@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { HomePageContext } from "../../context/HomePageContext"
 import { FormLogin } from "./components/FormLogin"
 import { LoginSteps } from "./types"
@@ -8,6 +8,13 @@ import { FormSelectAgent } from "./components/FormSelectAgent"
 
 const usePageLogin = () => {
     const homePageStep = useContext(HomePageContext)
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000)
+    }, [homePageStep])
 
     const contentPage = useMemo(() => {
         switch (homePageStep) {
@@ -34,8 +41,11 @@ const usePageLogin = () => {
                 return {
                     title: "Selecione o seu agente mais legal",
                     description: "Tenha a visão completa do seu agente.",
-                    containerHeight: 319,
-                    containerWidth: 405,
+                    containerProps: {
+                        padding: '36px 37px',
+                        width: 405,
+                        height: 319,
+                    },
                     titleMargin: '0 0 2rem 0',
                     rest: <FormSelectAgent />
                 }
@@ -44,6 +54,7 @@ const usePageLogin = () => {
 
     return {
         contentPage,
+        isLoading
     }
 }
 

@@ -4,11 +4,13 @@ import { IconLogin, InterrogacaoEscudo } from "../../../../components/Icons"
 import { ButtonContent, ContainerInputsLogin, TextButton } from "../../styles"
 import { ButtonForgoutPassword } from "../ButtonForgoutPassword"
 import useFormLogin from "./useFormLogin"
+import { ButtonCircularLoading } from "../../../../components/ButtonCircularLoading"
 
 export const FormLogin = () => {
   const {
     refInputEmail,
     refInputPassword,
+    isLoading,
     handleClickForgoutPassword,
     handleLogin
   } = useFormLogin()
@@ -21,12 +23,18 @@ export const FormLogin = () => {
       </ContainerInputsLogin>
       <Button
         onClick={handleLogin}
+        disabled={isLoading}
       >
         <ButtonContent>
-          <TextButton>
-            entrar
-          </TextButton>
-          <IconLogin />
+          {isLoading && <ButtonCircularLoading />}
+          {!isLoading &&
+            <>
+              <TextButton>
+                entrar
+              </TextButton>
+              <IconLogin />
+            </>
+          }
         </ButtonContent>
       </Button>
       <ButtonForgoutPassword

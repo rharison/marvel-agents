@@ -1,5 +1,6 @@
 import { Input } from "../../../../components"
 import { Button } from "../../../../components/Button"
+import { ButtonCircularLoading } from "../../../../components/ButtonCircularLoading"
 import { ButtonContent, TextButton } from "../../styles"
 import { Container } from "./styles"
 import useFormRecoveryPassword from "./useFormRecoveryPassword"
@@ -7,8 +8,9 @@ import useFormRecoveryPassword from "./useFormRecoveryPassword"
 export const FormRecoveryPassword = () => {
   const {
     valueInputEmail,
-    setValueInputEmail,
     isDisabledButton,
+    isLoading,
+    setValueInputEmail,
     handleClickSendLink
   } = useFormRecoveryPassword()
 
@@ -23,12 +25,15 @@ export const FormRecoveryPassword = () => {
       />
       <Button
         onClick={handleClickSendLink}
-        disabled={isDisabledButton}
+        disabled={isDisabledButton || isLoading}
       >
         <ButtonContent>
-          <TextButton>
-            enviar link
-          </TextButton>
+          {isLoading && <ButtonCircularLoading />}
+          {!isLoading &&
+            <TextButton>
+              enviar link
+            </TextButton>
+          }
         </ButtonContent>
       </Button>
     </Container>

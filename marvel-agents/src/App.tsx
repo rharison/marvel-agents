@@ -1,9 +1,11 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { gray } from "./theme/colors";
 import { Login } from "./pages";
 import { HomePageProvider } from "./context/HomePageContext";
 import { Toaster } from "react-hot-toast";
+import useAuth from "./hooks/useAuth";
+
 
 const mdTheme = createTheme(
   {
@@ -16,6 +18,12 @@ const mdTheme = createTheme(
   },
 );
 
+const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated() ? children : <Navigate to="/login" />;
+}
+
 function App() {
   return (
     <ThemeProvider theme={mdTheme}>
@@ -24,6 +32,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/" element={<PrivateRoute children={<h1>Home</h1>} />} />
           </Routes>
         </BrowserRouter>
         <Toaster />

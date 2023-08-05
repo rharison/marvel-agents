@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div<{ $height?: number, $width?: number }>`
-    padding: 49px 36px 43px 36px;
+export const Container = styled.div<{ $height?: number, $width?: number, $padding?: string }>`
+    padding: ${props => props.$padding ? props.$padding : '49px 36px 43px 36px'};
     width: ${props => props.$width ? `${props.$width}px` : '380px'};
     height: ${props => props.$height ? `${props.$height}px` : '433px'};
     display: flex;
@@ -32,8 +32,8 @@ export const ButtonContent = styled.div<{$width?: number, $height?: number}>`
     gap: 9px;
 `;
 
-export const TextButton = styled.span<{ size?: number, weight?: number }>`
+export const TextButton = styled.span<{ $size?: number, weight?: number }>`
     color: #fff;
     font-weight: ${props => props.weight ? props.weight : '700'};
-    font-size: ${props => props.size ? `${props.size}px` : '24px'};
+    font-size: ${props => props.$size ? `${props.$size}px` : '24px'};
 `;
