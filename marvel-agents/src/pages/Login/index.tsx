@@ -1,5 +1,5 @@
 import { TitleWithDecoration } from "../../components"
-import { Preloader } from "../../components/Preloader"
+import { Preloader } from "../../components"
 import { LayoutHome } from "../../layout"
 import { Container, Description } from "./styles"
 import usePageLogin from "./usePageLogin"

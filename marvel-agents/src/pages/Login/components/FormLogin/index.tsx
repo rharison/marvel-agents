@@ -1,10 +1,10 @@
 import { Input } from "../../../../components"
-import { Button } from "../../../../components/Button"
+import { Button } from "../../../../components"
 import { IconLogin, InterrogacaoEscudo } from "../../../../components/Icons"
 import { ButtonContent, ContainerInputsLogin, TextButton } from "../../styles"
 import { ButtonForgoutPassword } from "../ButtonForgoutPassword"
 import useFormLogin from "./useFormLogin"
-import { ButtonCircularLoading } from "../../../../components/ButtonCircularLoading"
+import { ButtonCircularLoading } from "../../../../components"
 
 export const FormLogin = () => {
   const {

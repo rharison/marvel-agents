@@ -1,7 +1,7 @@
 import { Fade } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { Container } from "./styles";
-import { SideMenu } from "../../components/SideMenu";
+import { SideMenu } from "../../components";
 
 export const LayoutApplication = () => {
     return (

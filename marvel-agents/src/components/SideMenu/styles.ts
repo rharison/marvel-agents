@@ -6,10 +6,11 @@ export const Container = styled.aside`
     width: 256px;
     box-shadow: 6px 0px 18px 0px #0000000F;
     background-color: #FFFFFF;
+    z-index: 1;
 `;
 
 export const Header = styled.header`
-    height: 61px;
+    height: 60px;
     border-bottom: 1px solid #EBEFF2;
     padding: 20px 0 14px 26px;
 

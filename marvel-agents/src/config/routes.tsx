@@ -1,20 +1,30 @@
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import { PersonIcon } from '../components/Icons/Person';
 import { RouteConfigItem } from '../types/routes';
+import { Home, Profile } from '../pages';
 
 export const appRoutes: RouteConfigItem[] = [
     {
         path: '/home',
         label: 'Home',
         icon: <DashboardOutlinedIcon />,
-        element: <div>Home</div>,
         changeIconStrokeColor: false
     },
     {
         path: '/profile',
         label: 'Perfil',
         icon: <PersonIcon />,
-        element: <div>Perfil</div>,
         changeIconStrokeColor: true
     }
 ]
+
+export const getComponentByPath = (path: string) => {
+    switch (path) {
+        case '/home':
+            return < Home />;
+        case '/profile':
+            return <Profile />;
+        default:
+            return <Home />;
+    }
+}

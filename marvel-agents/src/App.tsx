@@ -5,8 +5,8 @@ import { Login } from "./pages";
 import { HomePageProvider } from "./context/HomePageContext";
 import { Toaster } from "react-hot-toast";
 import useAuth from "./hooks/useAuth";
-import { LayoutApplication } from "./layout/Application";
-import { appRoutes } from "./config/routes";
+import { LayoutApplication } from "./layout";
+import { appRoutes, getComponentByPath } from "./config/routes";
 
 const mdTheme = createTheme(
   {
@@ -45,7 +45,9 @@ function App() {
                 <Route
                   key={route.path}
                   path={route.path}
-                  element={route.element}
+                  element={
+                    getComponentByPath(route.path)
+                  }
                 />
               ))}
             </Route>

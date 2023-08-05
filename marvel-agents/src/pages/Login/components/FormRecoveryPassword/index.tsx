@@ -1,6 +1,6 @@
 import { Input } from "../../../../components"
-import { Button } from "../../../../components/Button"
-import { ButtonCircularLoading } from "../../../../components/ButtonCircularLoading"
+import { Button } from "../../../../components"
+import { ButtonCircularLoading } from "../../../../components"
 import { ButtonContent, TextButton } from "../../styles"
 import { Container } from "./styles"
 import useFormRecoveryPassword from "./useFormRecoveryPassword"
