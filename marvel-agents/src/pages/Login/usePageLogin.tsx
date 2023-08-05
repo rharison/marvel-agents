@@ -4,6 +4,7 @@ import { FormLogin } from "./components/FormLogin"
 import { LoginSteps } from "./types"
 import { FormRecoveryPassword } from "./components/FormRecoveryPassword"
 import { SuccessRecoveryPassword } from "./components/SuccessRecoveryPassword"
+import { FormSelectAgent } from "./components/FormSelectAgent"
 
 const usePageLogin = () => {
     const homePageStep = useContext(HomePageContext)
@@ -35,7 +36,8 @@ const usePageLogin = () => {
                     description: "Tenha a visão completa do seu agente.",
                     containerHeight: 319,
                     containerWidth: 405,
-                    titleMargin: '0 0 2rem 0'
+                    titleMargin: '0 0 2rem 0',
+                    rest: <FormSelectAgent />
                 }
         }
     }, [homePageStep])

@@ -9,7 +9,7 @@ const HomePageContext = createContext(LoginSteps.LOGIN);
 const HomePagDispatchContext = createContext({} as React.Dispatch<React.SetStateAction<LoginSteps>>);
 
 function HomePageProvider({ children }: HomePageContextProps) {
-  const [step, setStep] = useState<LoginSteps>(LoginSteps.LOGIN);
+  const [step, setStep] = useState<LoginSteps>(LoginSteps.SELECT_AGENT);
 
   return (
     <HomePageContext.Provider value={step}>
