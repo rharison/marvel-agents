@@ -25,3 +25,9 @@ export const ContainerMenuItens = styled.div`
     gap: 15px;
     border-bottom: 1px solid #EBEFF2;
 `;
+
+export const RestContent = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 28px 24px 0 23px;
+`;

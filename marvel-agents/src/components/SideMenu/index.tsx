@@ -1,4 +1,5 @@
-import { Container, ContainerMenuItens, Header } from "./styles"
+import { ButtonLogout } from "./components/ButtonLogout";
+import { Container, ContainerMenuItens, Header, RestContent } from "./styles"
 import useSideMenu from "./useSideMenu";
 
 export const SideMenu = () => {
@@ -19,6 +20,9 @@ export const SideMenu = () => {
             <ContainerMenuItens>
                 {renderMenuItens()}
             </ContainerMenuItens>
+            <RestContent>
+                <ButtonLogout />
+            </RestContent>
         </Container>
     )
 }

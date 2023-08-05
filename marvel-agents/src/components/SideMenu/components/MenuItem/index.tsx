@@ -1,13 +1,17 @@
-import { Container, TextMenuItem } from "./styles"
-import { MenuItemProps } from "./types"
-import { useLocation } from "react-router-dom"
+import { Container, TextMenuItem } from "./styles";
+import { MenuItemProps } from "./types";
+import useMenuItem from "./useMenuItem";
 
 export const MenuItem = ({ routeItem }: MenuItemProps) => {
-    const location = useLocation();
+    const {
+        isActive,
+        handleClickeMenuItem
+    } = useMenuItem();
 
     return (
         <Container
-            $isActive={location.pathname === routeItem.path}
+            onClick={() => handleClickeMenuItem(routeItem.path)}
+            $isActive={isActive(routeItem.path)}
             $changeIconStrokeColor={routeItem.changeIconStrokeColor}
         >
             {routeItem.icon}

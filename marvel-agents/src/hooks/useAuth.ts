@@ -13,8 +13,14 @@ const useAuth = () => {
         return Boolean(decodedToken && !tokenIsExpired);
     };
 
+    const logout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+
     return {
-        isAuthenticated
+        isAuthenticated,
+        logout
     }
 }
 

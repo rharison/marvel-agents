@@ -7,15 +7,20 @@ import useFormSelectAgent from "./useFormSelectAgent"
 export const FormSelectAgent = () => {
     const {
         characters,
+        isDisabledButton,
+        handleSelectAgent,
+        handleClickEnter
     } = useFormSelectAgent()
 
     return (
         <Container>
             <SelectAgent
                 characters={characters}
+                callbackSelectedAgent={handleSelectAgent}
             />
             <Button
-                onClick={() => { }}
+                disabled={isDisabledButton}
+                onClick={handleClickEnter}
                 style={{
                     width: 'fit-content',
                     alignSelf: 'flex-end',

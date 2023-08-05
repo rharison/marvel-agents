@@ -4,7 +4,7 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import { SelectAgentProps } from "./types";
 import useSelectAgent from "./useSelectAgent";
 
-export const SelectAgent = ({ characters }: SelectAgentProps) => {
+export const SelectAgent = ({ characters, callbackSelectedAgent }: SelectAgentProps) => {
     const {
         open,
         selected,
@@ -19,7 +19,10 @@ export const SelectAgent = ({ characters }: SelectAgentProps) => {
             fullWidth
             displayEmpty
             value={selected}
-            onChange={handleChange}
+            onChange={(event) => {
+                handleChange(event);
+                callbackSelectedAgent(Number(event.target.value));
+            }}
             IconComponent={() => {
                 if (open) {
                     return <KeyboardArrowUpOutlinedIcon />
