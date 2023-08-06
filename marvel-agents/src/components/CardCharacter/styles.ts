@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $skeleton?: boolean }>`
     display: flex;
     gap: 15px;
     background-color: #EAECF0;
     border-radius: 15px;
-    padding: 14px 10px;
+    padding:  ${({ $skeleton }) => $skeleton ? '0' : '14px 10px'};
     height: 150px;
 `;
 

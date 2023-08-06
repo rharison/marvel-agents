@@ -1,5 +1,6 @@
 import { Character } from "../../types/agent"
 
 export type CardCharacterProps = {
-    character: Character
+    character?: Character
+    skeleton?: boolean
 }

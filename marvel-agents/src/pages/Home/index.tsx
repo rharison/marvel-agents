@@ -1,4 +1,5 @@
 import { CardCharacter } from "../../components"
+import { LIMIT_DATA_PER_PAGE } from "../../config/constants"
 import { Pagination } from "./components/Pagination"
 import { Container, Content, Footer, Header, ContainerContent } from "./styles"
 import useHome from "./useHome"
@@ -6,8 +7,10 @@ import useHome from "./useHome"
 export const Home = () => {
     const {
         page,
+        totalPages,
         characters,
-        handleChangePage
+        handleChangePage,
+        isLoading
     } = useHome()
 
     return (
@@ -17,7 +20,15 @@ export const Home = () => {
             </Header>
             <ContainerContent>
                 <Content>
-                    {characters.map(character => (
+                    {isLoading &&
+                        Array(LIMIT_DATA_PER_PAGE).fill(0).map((_, index) => (
+                            <CardCharacter
+                                key={index}
+                                skeleton
+                            />
+                        ))
+                    }
+                    {!isLoading && !!characters.length && characters.map(character => (
                         <CardCharacter
                             key={character.id}
                             character={character}
@@ -25,7 +36,11 @@ export const Home = () => {
                     ))}
                 </Content>
                 <Footer>
-                    <Pagination />
+                    <Pagination
+                        actualPage={page}
+                        totalPages={totalPages}
+                        onPageChange={handleChangePage}
+                    />
                 </Footer>
             </ContainerContent>
         </Container>

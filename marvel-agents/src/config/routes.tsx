@@ -5,7 +5,7 @@ import { Home, Profile } from '../pages';
 
 export const appRoutes: RouteConfigItem[] = [
     {
-        path: '/home',
+        path: '/',
         label: 'Home',
         icon: <DashboardOutlinedIcon />,
         changeIconStrokeColor: false
@@ -20,7 +20,7 @@ export const appRoutes: RouteConfigItem[] = [
 
 export const getComponentByPath = (path: string) => {
     switch (path) {
-        case '/home':
+        case '/':
             return < Home />;
         case '/profile':
             return <Profile />;

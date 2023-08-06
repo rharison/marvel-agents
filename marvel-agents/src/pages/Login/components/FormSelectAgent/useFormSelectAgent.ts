@@ -16,7 +16,7 @@ const useFormSelectAgent = () => {
 
     useEffect(() => {
         const fetchCharacters = async () => {
-            const characters = await getCharacters({
+            const { characters } = await getCharacters({
                 limit: 7,
                 offset: generateRandomNumber(7, 1555)
             });

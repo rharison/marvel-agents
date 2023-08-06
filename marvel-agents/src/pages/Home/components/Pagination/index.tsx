@@ -3,13 +3,15 @@ import { Container } from "./styles"
 import PaginationMUI from '@mui/material/Pagination';
 import { PreviousButton } from "../PreviousButton";
 import { NextButton } from "../NextButton";
+import { PaginationProps } from "./types";
 
-export const Pagination = () => {
+export const Pagination = ({ totalPages, onPageChange }: PaginationProps) => {
 
     return (
         <Container>
             <PaginationMUI
-                count={10}
+                count={totalPages}
+                onChange={(_, page) => onPageChange(page)}
                 defaultPage={1}
                 shape="rounded"
                 variant="outlined"

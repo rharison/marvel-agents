@@ -6,7 +6,12 @@ type GetCharactersParams = {
     offset?: number;
 }
 
-export const getCharacters = async ({ limit, offset }: GetCharactersParams): Promise<Character[]> => {
+type Response = {
+    characters: Character[];
+    totalItens: number;
+}
+
+export const getCharacters = async ({ limit, offset }: GetCharactersParams): Promise<Response> => {
     const { data } = await axiosInstance.get('/v1/public/characters', {
         params: {
             limit,
@@ -14,5 +19,10 @@ export const getCharacters = async ({ limit, offset }: GetCharactersParams): Pro
         }
     });
 
-    return data.data.results;
+    const response = {
+        characters: data.data.results,
+        totalItens: data.data.total,
+    }
+
+    return response
 }
