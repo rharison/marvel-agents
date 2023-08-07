@@ -4,11 +4,10 @@ import * as CryptoJS from 'crypto-js';
 export const generateToken = (payloadUser: Omit<PayloadLogin, 'password'>): string => {
     const secretKey = 'MOCK_SECRET_KEY'
     const expiresIn = Math.floor(Date.now() / 1000) + (60 * 60)
-    const expireIn60Sec = Math.floor(Date.now() / 1000) + 60
 
     const payload = {
         ...payloadUser,
-        exp: expireIn60Sec,
+        exp: expiresIn,
     };
 
     const header = {
