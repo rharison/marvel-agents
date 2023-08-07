@@ -23,7 +23,6 @@ export const Header = styled.header`
 `;
 
 export const Content = styled.div`
-    margin: 42px 0 0 58px;
     display: flex;
     justify-content: space-between;
     align-items: center;
