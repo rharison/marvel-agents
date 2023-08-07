@@ -6,7 +6,7 @@ const useSideMenu = () => {
     const navigate = useNavigate();
 
     const handleClickLogo = () => {
-        navigate('/home');
+        navigate('/');
     }
 
     const renderMenuItens = () => {
