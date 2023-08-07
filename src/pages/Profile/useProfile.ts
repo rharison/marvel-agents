@@ -3,15 +3,24 @@ import { getCharacterById } from "../../services/characters";
 import { useSearchParams } from "react-router-dom"
 import { Character } from "../../types/agent";
 import useToast from "../../hooks/useToast";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const useProfile = () => {
     const [character, setCharacter] = useState<Character | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(false);
 
+    const navigate = useNavigate()
+    const {
+        isAuthenticated
+    } = useAuth()
     const [searchParams] = useSearchParams();
     const { showToast } = useToast()
 
     useEffect(() => {
+        if(!isAuthenticated()) {
+            return navigate('/login')
+        }
         getCharacter()
     }, [])
 

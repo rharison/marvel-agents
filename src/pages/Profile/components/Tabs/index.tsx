@@ -1,22 +1,17 @@
-import { Container, ContentTabs } from "./styles";
+import { Container, ContainerTabPanel, ContentTabs, stylesTab, stylesTabIndicator } from "./styles";
 import Tabs from '@mui/material/Tabs';
 import useTabs from "./useTabs";
 import { Tab } from "@mui/material";
+import { TabsProfileProps } from "./types";
 
-const a11yProps = (index: number) => {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-
-export const TabsProfile = () => {
+export const TabsProfile = ({ character }: TabsProfileProps) => {
     const {
         tabsData,
         selectedTab,
-        handleChange
-    } = useTabs()
+        handleChange,
+        a11yProps,
+        renderContentByTab
+    } = useTabs(character)
 
     return (
         <Container>
@@ -25,12 +20,7 @@ export const TabsProfile = () => {
                     value={selectedTab}
                     onChange={handleChange}
                     aria-label="Tabs infos profile agent"
-                    TabIndicatorProps={{
-                        style: {
-                            backgroundColor: '#081B4E',
-                            height: '3px'
-                        }
-                    }}
+                    TabIndicatorProps={stylesTabIndicator}
                 >
                     {tabsData.map((tab) => (
                         <Tab
@@ -38,17 +28,14 @@ export const TabsProfile = () => {
                             key={tab.id}
                             label={tab.label}
                             {...a11yProps(tab.id)}
-                            sx={{
-                                fontWeight: '500',
-                                textTransform: 'none',
-                                '&.Mui-selected': {
-                                    color: '#081B4E'
-                                }
-                            }}
+                            sx={stylesTab}
                         />
                     ))}
                 </Tabs>
             </ContentTabs>
+            <ContainerTabPanel>
+                {renderContentByTab(selectedTab)}
+            </ContainerTabPanel>
         </Container>
     )
 }

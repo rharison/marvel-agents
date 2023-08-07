@@ -7,6 +7,7 @@ export const Container = styled.div<{ $skeleton?: boolean }>`
     border-radius: 15px;
     padding:  ${({ $skeleton }) => $skeleton ? '0' : '14px 10px'};
     height: 150px;
+    cursor: ${({ $skeleton }) => $skeleton ? 'default' : 'pointer'};
 `;
 
 export const ContainerCharacterPicture = styled.div`
@@ -26,7 +27,7 @@ export const ContainerCharacterPicture = styled.div`
 export const ContainerText = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     width: calc(100% - 104px);
 `;
 
@@ -44,4 +45,5 @@ export const Description = styled.span`
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding-top: 2px;
 `;

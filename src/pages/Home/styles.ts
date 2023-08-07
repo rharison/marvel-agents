@@ -32,7 +32,7 @@ export const Content = styled.div`
 export const Footer = styled.footer`
     flex: 1;
     background-color: #fff;
-    padding: 32px 16px 0 39px;
+    padding: 32px 16px 20px 39px;
     border-top: 1px solid #EBEFF2;
     display: flex;
     justify-content: center;
