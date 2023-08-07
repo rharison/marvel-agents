@@ -15,7 +15,6 @@ export const Profile = () => {
             <Header />
             <Content>
                 {isLoading && <SkeletonProfile />}
-                {!isLoading && !character && <h1>Personagem não encontrado</h1>}
                 {!isLoading && character &&
                     <>
                         <ContainerTitle>
