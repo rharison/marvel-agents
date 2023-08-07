@@ -16,6 +16,9 @@ const mdTheme = createTheme(
         default: gray['background'],
       }
     },
+    typography: {
+      fontFamily: 'Epilogue',
+    }
   },
 );
 
