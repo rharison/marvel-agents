@@ -1,4 +1,5 @@
 import { TitleWithDecoration } from "../../components"
+import { TabsProfile } from "./components/Tabs"
 import { Container, ContainerTitle, Content, Header, Title } from "./styles"
 import useProfile from "./useProfile"
 
@@ -22,6 +23,7 @@ export const Profile = () => {
                     <Title>
                         {character?.name}
                     </Title>
+                    <TabsProfile />
                 </ContainerTitle>
             </Content>
         </Container>
