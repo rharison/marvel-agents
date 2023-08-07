@@ -5,6 +5,8 @@ const PRIVATE_KEY = isDevelopment
     ? import.meta.env.VITE_MARVEL_API_PRIVATE_KEY
     : import.meta.env.MARVEL_API_PRIVATE_KEY
 
+console.log('ENVS ', import.meta.env)
+
 export const getApiCredentials = () => {
     const timeStamp = new Date().getTime();
     const hash = md5.create();
