@@ -28,3 +28,9 @@ export const getCharacters = async ({ limit, offset, name }: GetCharactersParams
 
     return response
 }
+
+export const getCharacterById = async (id: number): Promise<Character> => {
+    const { data } = await axiosInstance.get(`/v1/public/characters/${id}`);
+
+    return data.data.results[0];
+}

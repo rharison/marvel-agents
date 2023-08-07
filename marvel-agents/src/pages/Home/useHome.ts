@@ -10,9 +10,10 @@ const useHome = () => {
     const [characters, setCharacters] = useState<Character[]>([])
     const [totalPages, setTotalPages] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
+    const [search, setSearch] = useState<string>('')
     const { showToast } = useToast()
 
-    const fetchCharacters = useCallback(async (search?: string) => {
+    const fetchCharacters = useCallback(async () => {
         try {
             setIsLoading(true)
             const { characters, totalItens } = await getCharacters({
@@ -31,7 +32,7 @@ const useHome = () => {
         } finally {
             setIsLoading(false)
         }
-    }, [page])
+    }, [page, search])
 
     useEffect(() => {
         fetchCharacters();
@@ -42,7 +43,7 @@ const useHome = () => {
     }
 
     const debounceSearch = useCallback(
-        debounce((search: string) => fetchCharacters(search), 500),
+        debounce((search: string) => setSearch(search), 500),
         []
     )
 

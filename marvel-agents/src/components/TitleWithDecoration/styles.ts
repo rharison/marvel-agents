@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const Title = styled.span<{ $decoration: string, $margin: string }>`
-    font-size: 2.25rem;
+export const Title = styled.span<{ $decoration: string, $margin: string, $size: number }>`
+    font-size: ${props => props.$size}rem;
     color: #081B4E;
     font-weight: 700;
     line-height: initial;
@@ -12,7 +12,7 @@ export const Title = styled.span<{ $decoration: string, $margin: string }>`
         content: '${props => props.$decoration}';
         color: #F43724;
         position: relative;
-        font-size: 2.25rem;
+        font-size: ${props => props.$size}rem;
         font-weight: 700;
         margin-left: ${props => props.$decoration !== '.' ? '4px' : '0'};
     }

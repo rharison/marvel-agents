@@ -28,6 +28,7 @@ const useFormSelectAgent = () => {
 
     const handleClickEnter = () => {
         if(selectedCharacterId) {
+            localStorage.setItem('selectedCharacterId', selectedCharacterId.toString());
             navigate(`/profile?characterId=${selectedCharacterId}`);
         }
     }
