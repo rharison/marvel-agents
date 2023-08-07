@@ -40,7 +40,7 @@ export const Home = () => {
                     ))}
                 </Content>
                 <Footer>
-                    {!!characters.length && !isLoading &&
+                    {!!characters.length &&
                         <Pagination
                             actualPage={page}
                             totalPages={totalPages}
