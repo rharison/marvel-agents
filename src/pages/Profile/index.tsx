@@ -23,7 +23,11 @@ export const Profile = () => {
                     <Title>
                         {character?.name}
                     </Title>
-                    <TabsProfile />
+                    {character &&
+                        <TabsProfile
+                            character={character}
+                        />
+                    }
                 </ContainerTitle>
             </Content>
         </Container>
