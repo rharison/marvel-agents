@@ -3,7 +3,6 @@ import { ListProps } from "./types"
 
 
 export const List = ({ itens }: ListProps) => {
-
     return (
         <Container>
             <StyledUL>
