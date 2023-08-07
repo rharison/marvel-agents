@@ -34,12 +34,19 @@ const useFormLogin = () => {
     }
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if(event.key === 'Enter') {
+      handleLogin()
+    }
+  }
+
   return {
     refInputEmail,
     refInputPassword,
+    isLoading: loading,
     handleClickForgoutPassword,
     handleLogin,
-    isLoading: loading
+    handleKeyDown,
   }
 }
 

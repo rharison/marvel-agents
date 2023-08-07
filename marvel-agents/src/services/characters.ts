@@ -4,6 +4,7 @@ import { axiosInstance } from "./axios";
 type GetCharactersParams = {
     limit?: number;
     offset?: number;
+    name?: string;
 }
 
 type Response = {
@@ -11,11 +12,12 @@ type Response = {
     totalItens: number;
 }
 
-export const getCharacters = async ({ limit, offset }: GetCharactersParams): Promise<Response> => {
+export const getCharacters = async ({ limit, offset, name }: GetCharactersParams): Promise<Response> => {
     const { data } = await axiosInstance.get('/v1/public/characters', {
         params: {
             limit,
-            offset
+            offset,
+            ...(name && { nameStartsWith: name })
         }
     });
 

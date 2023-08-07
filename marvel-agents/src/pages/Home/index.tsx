@@ -1,6 +1,7 @@
 import { CardCharacter } from "../../components"
 import { LIMIT_DATA_PER_PAGE } from "../../config/constants"
 import { Pagination } from "./components/Pagination"
+import { SearchField } from "./components/SearchField"
 import { Container, Content, Footer, Header, ContainerContent } from "./styles"
 import useHome from "./useHome"
 
@@ -9,14 +10,17 @@ export const Home = () => {
         page,
         totalPages,
         characters,
+        isLoading,
         handleChangePage,
-        isLoading
+        handleSearch,
     } = useHome()
 
     return (
         <Container>
             <Header>
-
+                <SearchField
+                    handleChange={handleSearch}
+                />
             </Header>
             <ContainerContent>
                 <Content>
@@ -36,11 +40,13 @@ export const Home = () => {
                     ))}
                 </Content>
                 <Footer>
-                    <Pagination
-                        actualPage={page}
-                        totalPages={totalPages}
-                        onPageChange={handleChangePage}
-                    />
+                    {!!characters.length && !isLoading &&
+                        <Pagination
+                            actualPage={page}
+                            totalPages={totalPages}
+                            onPageChange={handleChangePage}
+                        />
+                    }
                 </Footer>
             </ContainerContent>
         </Container>

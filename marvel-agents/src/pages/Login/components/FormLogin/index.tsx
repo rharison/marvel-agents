@@ -12,7 +12,8 @@ export const FormLogin = () => {
     refInputPassword,
     isLoading,
     handleClickForgoutPassword,
-    handleLogin
+    handleLogin,
+    handleKeyDown
   } = useFormLogin()
 
   return (
@@ -39,6 +40,7 @@ export const FormLogin = () => {
       </Button>
       <ButtonForgoutPassword
         onClick={handleClickForgoutPassword}
+        onKeyDown={handleKeyDown}
       >
         <InterrogacaoEscudo />
         Esqueceu a senha?

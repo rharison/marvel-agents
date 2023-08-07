@@ -5,7 +5,7 @@ import { PreviousButton } from "../PreviousButton";
 import { NextButton } from "../NextButton";
 import { PaginationProps } from "./types";
 
-export const Pagination = ({ totalPages, onPageChange }: PaginationProps) => {
+export const Pagination = ({ totalPages, onPageChange, actualPage }: PaginationProps) => {
 
     return (
         <Container>
@@ -13,10 +13,10 @@ export const Pagination = ({ totalPages, onPageChange }: PaginationProps) => {
                 count={totalPages}
                 onChange={(_, page) => onPageChange(page)}
                 defaultPage={1}
+                page={actualPage}
                 shape="rounded"
                 variant="outlined"
                 boundaryCount={1}
-                siblingCount={-1}
                 renderItem={(item) => (
                     <PaginationItem
                         slots={{ previous: PreviousButton, next: NextButton }}
