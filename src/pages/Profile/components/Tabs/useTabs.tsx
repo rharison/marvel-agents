@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Tabs } from "./types"
 import { VisaoGeral } from "../VisaoGeral"
 import { Character } from "../../../../types/agent"
+import { List } from "../List"
+import { convertInStringArray } from "../../../../utils/infoCharacter"
 
 const useTabs = (character: Character) => {
     const [selectedTab, setSelectedTab] = useState(1)
@@ -11,22 +13,34 @@ const useTabs = (character: Character) => {
             id: Tabs.VISAO_GERAL,
             label: 'Visão Geral',
         },
-        {
-            id: Tabs.TEAMS,
-            label: 'Teams'
-        },
-        {
-            id: Tabs.POWERS,
-            label: 'Powers'
-        },
-        {
-            id: Tabs.SPECIES,
-            label: 'Species'
-        },
-        {
-            id: Tabs.AUTHORS,
-            label: 'Authors'
-        }
+        ...(character.comics.available > 0
+            ? [{
+                id: Tabs.COMICS,
+                label: 'Comics'
+            }]
+            : []
+        ),
+        ...(character.events.available > 0
+            ? [{
+                id: Tabs.EVENTS,
+                label: 'Events'
+            }]
+            : []
+        ),
+        ...(character.series.available > 0
+            ? [{
+                id: Tabs.SERIES,
+                label: 'Series'
+            }]
+            : []
+        ),
+        ...(character.stories.available > 0
+            ? [{
+                id: Tabs.STORIES,
+                label: 'Stories'
+            }]
+            : []
+        ),
     ]
 
     const renderContentByTab = (tabId: number) => {
@@ -39,29 +53,29 @@ const useTabs = (character: Character) => {
                         urlImage={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                     />
                 )
-            case Tabs.TEAMS:
+            case Tabs.COMICS:
                 return (
-                    <>
-                        teams
-                    </>
+                    <List
+                        itens={convertInStringArray(character.comics.items)}
+                    />
                 )
-            case Tabs.POWERS:
+            case Tabs.EVENTS:
                 return (
-                    <>
-                        powers
-                    </>
+                    <List
+                        itens={convertInStringArray(character.events.items)}
+                    />
                 )
-            case Tabs.SPECIES:
+            case Tabs.SERIES:
                 return (
-                    <>
-                        species
-                    </>
+                    <List
+                        itens={convertInStringArray(character.series.items)}
+                    />
                 )
-            case Tabs.AUTHORS:
+            case Tabs.STORIES:
                 return (
-                    <>
-                        authors
-                    </>
+                    <List
+                        itens={convertInStringArray(character.stories.items)}
+                    />
                 )
             default:
                 return (

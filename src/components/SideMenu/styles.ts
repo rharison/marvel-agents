@@ -7,6 +7,8 @@ export const Container = styled.aside`
     box-shadow: 6px 0px 18px 0px #0000000F;
     background-color: #FFFFFF;
     z-index: 1;
+    position: sticky;
+    top: 0;
 `;
 
 export const Header = styled.header`
