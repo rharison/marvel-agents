@@ -8,7 +8,9 @@ export const List = ({ itens }: ListProps) => {
         <Container>
             <StyledUL>
                 {itens.map((item) => (
-                    <ItemList>
+                    <ItemList
+                        key={item}
+                    >
                         {item}
                     </ItemList>
                 ))}

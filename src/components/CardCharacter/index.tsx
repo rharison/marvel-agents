@@ -1,11 +1,20 @@
 import { Container, ContainerCharacterPicture, ContainerText, Title, Description } from "./styles"
 import { CardCharacterProps } from "./types"
 import { Skeleton } from "@mui/material"
+import useCardCharacter from "./useCardCharacter"
 
 export const CardCharacter = ({ character, skeleton }: CardCharacterProps) => {
+    const {
+        handleCardClick
+    } = useCardCharacter()
 
     return (
         <Container
+            onClick={() => {
+                if (!skeleton && character) {
+                    handleCardClick(character.id)
+                }
+            }}
             $skeleton={skeleton}
         >
             {!skeleton && character &&
